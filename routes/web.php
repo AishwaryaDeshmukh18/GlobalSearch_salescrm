@@ -1,10 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/search', function () {
-    return Inertia::render('GlobalSearch');
+    return view('welcome');
 });
 
 Route::get('/{any?}', function () {
