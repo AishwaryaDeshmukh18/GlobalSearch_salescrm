@@ -22,7 +22,16 @@ export default function GlobalSearch() {
 const [query, setQuery] = useState("");
   const [selectedBU, setSelectedBU] = useState("All");
   const [showAdvanced, setShowAdvanced] = useState(false);
-
+const [basicOwner, setBasicOwner] = useState("");
+const [basicLifecycle, setBasicLifecycle] = useState("");
+const [basicStage, setBasicStage] = useState("");
+const resetBasicFilters = () => {
+  setQuery("");
+  setSelectedBU("All");
+  setBasicOwner("");
+  setBasicLifecycle("");
+  setBasicStage("");
+};
   /* ===== ADVANCED STATE ===== */
 
   const [advBusinessUnit, setAdvBusinessUnit] = useState("");
@@ -43,6 +52,7 @@ const [query, setQuery] = useState("");
   const [advLastActivityDate, setAdvLastActivityDate] = useState("");
   const [advLastMarketingDate, setAdvLastMarketingDate] = useState("");
   const [advNoUpdateDays, setAdvNoUpdateDays] = useState("");
+
 
   const resetAdvanced = () => {
     setAdvBusinessUnit("");
@@ -95,7 +105,15 @@ const stages = [...new Set(allItems.map(i => i.stage).filter(Boolean))];
 
       const basicMatch =
         selectedBU === "All" || item.businessUnit === selectedBU;
+      
+        const basicOwnerMatch =
+  basicOwner === "" || item.owner === basicOwner;
 
+const basicLifecycleMatch =
+  basicLifecycle === "" || item.lifecycle === basicLifecycle;
+
+const basicStageMatch =
+  basicStage === "" || item.stage === basicStage;
       const advancedMatch =
         (advBusinessUnit === "" || item.businessUnit === advBusinessUnit) &&
         (advOwner === "" || item.owner === advOwner) &&
@@ -103,12 +121,30 @@ const stages = [...new Set(allItems.map(i => i.stage).filter(Boolean))];
         (advLifecycle === "" || item.lifecycle === advLifecycle) &&
         (advStage === "" || item.stage === advStage);
 
-      return searchMatch && basicMatch && advancedMatch;
+      return (
+  searchMatch &&
+  basicMatch &&
+  basicOwnerMatch &&
+  basicLifecycleMatch &&
+  basicStageMatch &&
+  advancedMatch
+);
     });
 
   const contacts = useMemo(
     () => filterItems(dataset.contacts),
-    [query, selectedBU, advBusinessUnit, advOwner, advCountry, advLifecycle, advStage]
+   [
+  query,
+  selectedBU,
+  basicOwner,
+  basicLifecycle,
+  basicStage,
+  advBusinessUnit,
+  advOwner,
+  advCountry,
+  advLifecycle,
+  advStage
+]
   );
 
   const companies = useMemo(
@@ -148,7 +184,44 @@ const stages = [...new Set(allItems.map(i => i.stage).filter(Boolean))];
               </button>
             ))}
           </div>
+<div className="basic-dropdown-group">
 
+  <select
+    value={basicOwner}
+    onChange={(e) => setBasicOwner(e.target.value)}
+  >
+    <option value="">Owner</option>
+    {owners.map((o) => (
+      <option key={o} value={o}>{o}</option>
+    ))}
+  </select>
+
+  <select
+    value={basicLifecycle}
+    onChange={(e) => setBasicLifecycle(e.target.value)}
+  >
+    <option value="">Lifecycle</option>
+    {lifecycles.map((l) => (
+      <option key={l} value={l}>{l}</option>
+    ))}
+  </select>
+
+  <select
+    value={basicStage}
+    onChange={(e) => setBasicStage(e.target.value)}
+  >
+    <option value="">Stage</option>
+    {stages.map((s) => (
+      <option key={s} value={s}>{s}</option>
+    ))}
+  </select>
+<button
+  className="reset-basic-btn"
+  onClick={resetBasicFilters}
+>
+  Reset
+</button>
+</div>
           <button
             className="advanced-btn"
             onClick={() => setShowAdvanced(true)}
