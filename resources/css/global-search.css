@@ -30,7 +30,7 @@
   margin: 0;
 }
 
-/* Search Input */
+/* ================= SEARCH ================= */
 
 .search-wrapper input {
   height: 38px;
@@ -49,34 +49,28 @@
 
 /* ================= FILTER ROW ================= */
 
-/* ================= FILTER ROW ================= */
-
 .filter-row {
-  margin-top: 26px;
+  margin-top: 24px;
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: nowrap;          /* Force everything in one line */
-  white-space: nowrap;        /* Prevent wrapping */
-  overflow-x: auto;           /* Scroll if screen smaller */
+  gap: 14px;
 }
 
-/* BU Buttons */
+/* ===== BU BUTTONS ===== */
 
 .bu-group {
   display: flex;
-  gap: 8px;
-  flex-shrink: 0;
+  gap: 10px;
 }
 
 .bu-group button {
   height: 36px;
-  padding: 0 14px;            /* Slightly reduced padding */
-  border-radius: 8px;
+  padding: 0 16px;
+  
   border: 1px solid #d8dde6;
   background: #f3f4f6;
-  cursor: pointer;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .bu-group .active {
@@ -85,102 +79,69 @@
   border-color: #2e436e;
 }
 
-/* Basic Dropdown Group */
-
-.basic-dropdown-group {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-.basic-dropdown-group select {
-  height: 36px;
-  min-width: 120px;          /* Reduced width */
-  padding: 0 10px;
-  border-radius: 8px;
-  border: 1px solid #d8dde6;
-  background: #f9fafb;
-  font-size: 14px;
-}
-
-/* Reset Button */
-
-.reset-basic-btn {
-  height: 36px;
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid #d8dde6;
-  background: #f3f4f6;
-  cursor: pointer;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.reset-basic-btn:hover {
-  background: #e5e7eb;
-}
-
-/* Advanced Button */
-
-.advanced-btn {
-  height: 36px;
-  padding: 0 14px;
-  border-radius: 8px;
-  border: 1px solid #d8dde6;
-  background: #f3f4f6;
-  cursor: pointer;
-  font-size: 14px;
-  flex-shrink: 0;
-}
-
-.advanced-btn:hover {
-  background: #e5e7eb;
-}
-/* Basic Dropdown Group */
+/* ===== DROPDOWNS ===== */
 
 .basic-dropdown-group {
   display: flex;
   gap: 12px;
-  align-items: center;
+  margin-left: 8px;
 }
 
 .basic-dropdown-group select {
   height: 36px;
-  min-width: 140px;
-  padding: 0 12px;
-  border-radius: 8px;
+  min-width: 110px;   /* reduced width */
+  padding: 0 10px;
+  border-radius: 2px;
   border: 1px solid #d8dde6;
   background: #f9fafb;
   font-size: 14px;
 }
+/* ===== RIGHT SIDE ACTION BUTTONS ===== */
 
-/* Reset Button */
+.filter-actions {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;
+}
+
+/* RESET BUTTON */
 
 .reset-basic-btn {
   height: 36px;
   padding: 0 16px;
-  border-radius: 8px;
+  
   border: 1px solid #d8dde6;
   background: #f3f4f6;
-  cursor: pointer;
   font-size: 14px;
+  cursor: pointer;
 }
 
-.reset-basic-btn:hover {
-  background: #e5e7eb;
-}
-
-/* Advanced Button */
+/* ADVANCED BUTTON */
 
 .advanced-btn {
   height: 36px;
   padding: 0 16px;
-  border-radius: 8px;
+
   border: 1px solid #d8dde6;
   background: #f3f4f6;
-  cursor: pointer;
   font-size: 14px;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.reset-basic-btn:hover,
+.advanced-btn:hover {
+  background: #e5e7eb;
+}
+
+/* ICON */
+
+.filter-icon {
+  font-size: 16px;
 }
 
 /* ================= GALLERY ================= */
@@ -233,7 +194,7 @@
   color: #111827;
 }
 
-/* Status Badge */
+/* STATUS BADGES */
 
 .status-badge {
   font-size: 11px;
@@ -257,7 +218,7 @@
   color: #e65100;
 }
 
-/* Info Pills */
+/* INFO PILLS */
 
 .row-subinfo {
   display: flex;
@@ -273,7 +234,7 @@
   color: #374151;
 }
 
-/* Tags */
+/* TAGS */
 
 .tags {
   display: flex;
@@ -289,7 +250,7 @@
   color: #2e436e;
 }
 
-/* Primary Button */
+/* BUTTON */
 
 .primary-btn {
   background: #6d8f3c;
@@ -306,7 +267,7 @@
   opacity: 0.95;
 }
 
-/* ================= EMPTY STATE ================= */
+/* EMPTY STATE */
 
 .empty-message {
   text-align: center;
@@ -315,7 +276,7 @@
   font-size: 14px;
 }
 
-/* ================= ADVANCED OVERLAY ================= */
+/* ================= ADVANCED FILTER PANEL ================= */
 
 .adv-overlay {
   position: fixed;
@@ -331,8 +292,6 @@
   opacity: 1;
   pointer-events: auto;
 }
-
-/* ================= ADVANCED PANEL ================= */
 
 .adv-panel {
   position: fixed;
@@ -351,8 +310,6 @@
   right: 0;
 }
 
-/* Header */
-
 .adv-header {
   display: flex;
   justify-content: space-between;
@@ -362,24 +319,21 @@
 .adv-header-actions {
   display: flex;
   gap: 12px;
-  align-items: center;
 }
 
 .close-btn {
   background: transparent;
   border: none;
   font-size: 22px;
-  font-weight: 600;
   cursor: pointer;
   color: #6b7280;
-  padding: 4px 8px;
 }
 
 .close-btn:hover {
   color: #111827;
 }
 
-/* Filter Box */
+/* FILTER INPUTS */
 
 .filter-box {
   display: flex;
@@ -391,7 +345,6 @@
   font-size: 12px;
   font-weight: 500;
   margin-bottom: 6px;
-  color: #374151;
 }
 
 .filter-box select,
@@ -403,13 +356,7 @@
   font-size: 13px;
 }
 
-.filter-box select:focus,
-.filter-box input:focus {
-  outline: none;
-  border-color: #2e436e;
-}
-
-/* Apply Button */
+/* APPLY BUTTON */
 
 .apply-btn {
   margin-top: 24px;
@@ -420,10 +367,25 @@
   background: #6d8f3c;
   color: #ffffff;
   font-size: 14px;
-  font-weight: 500;
   cursor: pointer;
 }
 
 .apply-btn:hover {
   opacity: 0.95;
+}
+/* ================= ADVANCED FILTER SECTIONS ================= */
+
+.adv-section {
+  margin-top: 22px;
+}
+
+.adv-section:first-of-type {
+  margin-top: 10px;
+}
+
+.adv-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 10px;
 }
